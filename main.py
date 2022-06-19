@@ -38,8 +38,8 @@ def setup_logger():
 
 def help(update, context):
     update.message.reply_text('Mövcud əmrlər:\n' +
-                              '/basla - Yeni oyun başladmaq\n' +
-                              '/master - Aparıcı olmaq\n' +
+                              '/game - Yeni oyun başladmaq\n' +
+                              '/qgame - Aparıcı olmaq\n' +
                               '/rating - Qrup üzrə reytinq', reply_to_message_id=True)
 
 
@@ -66,10 +66,10 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="🤓 Məni Guruonuza Əlavə Edin", url="https://t.me/BSsozoyunbot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="⚕️ Support", url="https://t.me/BLACK_MMC")
-        oyun = InlineKeyboardButton(text="🐈 Söhbət Gurupmuz", url="https://t.me/Cat_House_Gurups")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/F_r_o_z_e_d_i")
+        addme = InlineKeyboardButton(text="🤓 Məni Guruonuza Əlavə Edin", url="https://t.me/richCroAzbot?startgroup=a")
+        sohbet = InlineKeyboardButton(text="⚕️ Support", url="https://t.me/Richsuppp")
+        oyun = InlineKeyboardButton(text="🐈 Söhbət Gurupmuz", url="https://t.me/karabakhteamm")
+        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/Axhmedov7")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -79,7 +79,7 @@ def command_start(update, context: CallbackContext):
         user_id = update.message.from_user.id
         username = update.message.from_user.full_name
 
-        logger.info('Got command /basla,'
+        logger.info('Got command /game,'
                     'chat_id={},'
                     'user_id'.format(chat_id,
                                      user_id))
@@ -127,7 +127,7 @@ def command_master(update: Update, context):
                                   reply_to_message_id=True)
         return
 
-    logger.info('Got command /master,'
+    logger.info('Got command /qgame,'
                 'chat_id={},'
                 'user="{}"({}),'
                 'timedelta={}'.format(chat_id,
@@ -233,8 +233,8 @@ def main():
 
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("basla", command_start))
-    dp.add_handler(CommandHandler("master", command_master))
+    dp.add_handler(CommandHandler("game", command_start))
+    dp.add_handler(CommandHandler("qgame", command_master))
     dp.add_handler(CommandHandler("show_word", command_show_word))
     dp.add_handler(CommandHandler("change_word", command_change_word))
     dp.add_handler(CommandHandler("rating", command_rating))
